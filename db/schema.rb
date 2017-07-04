@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703180913) do
+ActiveRecord::Schema.define(version: 20170704172037) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
     t.text     "body"
-    t.string   "resource_type"
-    t.integer  "resource_id"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
     t.string   "author_type"
     t.integer  "author_id"
     t.datetime "created_at",    null: false
@@ -41,6 +41,23 @@ ActiveRecord::Schema.define(version: 20170703180913) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "drinks", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "steps"
+    t.string   "source"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.integer  "drink_id"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["drink_id"], name: "index_ingredients_on_drink_id"
   end
 
 end
