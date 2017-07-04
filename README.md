@@ -1,3 +1,3 @@
 List of Ingredients
 
-Rails 5 API + React 
+Basic Rails 5 API + React client build
